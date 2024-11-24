@@ -1,0 +1,74 @@
+main {
+    width: 100%;
+}
+
+#main-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../Assets/group-chat/street-background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#conteudos-container {
+    display: flex;
+    width: 84vw;
+    height: 80%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+}
+
+
+#titulo-container {
+    height: 20%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    color: white;
+}
+
+#chats-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+    gap: 200px;
+
+}
+
+.botao-chat {
+    height: 50%;
+    width: 30%;
+    background:
+        url(../../Assets/Filter2.png) repeat,
+        #252525;
+}
+
+.botao-chat a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    transition: 1s;
+}
+
+.botao-chat a:hover {
+    transition: 1s;
+    transform: scale(1.1);
+}
+
+

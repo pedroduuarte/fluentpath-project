@@ -1,0 +1,75 @@
+footer {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: url(../../Assets/Filter2.png) no-repeat,  #111213;
+    background-size: cover;
+}
+
+#footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+}
+
+#footer-container span {
+    width: 100%;
+    border-top: 1px solid white;
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+}
+
+#logo-footer {
+    width: 150px;
+}
+
+#social-medias {
+    min-height: 28px;
+}
+
+#social-medias img {
+    width: 28px;
+    margin: 0 5px;
+}
+
+#nav-infos {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    text-align: center;
+}
+
+#nav-infos div {
+    min-width: 200px;
+}
+
+#nav-infos div h3 {
+    background-image: linear-gradient(to right, #cc3e18, #f0971c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #f0971c;
+}
+
+#nav-infos div ul {
+    list-style-type: none;
+}
+
+#nav-infos div ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+#nav-infos div ul li a:hover {
+    transition: transform 0.3s;
+    color: #CC3E18;
+}

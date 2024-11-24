@@ -1,0 +1,44 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    background: url(../../Assets/Filter2.png) repeat-y, #111213;
+    background-size: contain;
+}
+
+main article {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    margin-bottom: 50px;
+}
+
+#post-article h1, h2, p, li {
+    opacity: 90%;
+    color: white;
+}
+
+#post-article h1 {
+    margin-top: 150px;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+#post-article h2 {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+#post-article p {
+    font-weight: 400;
+    font-size: 28px;
+}
+
+#post-article li {
+    margin-left: 35px;
+    font-weight: 400;
+    font-size: 28px;
+}
