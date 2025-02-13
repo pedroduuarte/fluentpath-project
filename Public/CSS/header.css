@@ -25,19 +25,36 @@ header nav ul {
     display: flex;
     gap: 16px;
     text-decoration: none;
+
+    align-items: center;
 }
 
 header nav ul li {
     list-style-type: none;
 }
 
-header a {
+header a,
+#loginButton {
     text-decoration: none;
-    color: white;
     font-weight: 500;
+    color: white;
+    font-size: 1rem;
 }
 
-header nav ul li a:hover {
+header nav ul li a:hover,
+#loginButton:hover {
     transition: transform 0.3s;
     color: #CC3E18;
+}
+
+#loginButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px;
+    background: none;
+    border: none;
+
+    cursor: pointer;
 }
