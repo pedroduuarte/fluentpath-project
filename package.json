@@ -18,11 +18,11 @@
     "url": "https://github.com/pedroduuarte/fluentpath-project/issues"
   },
   "homepage": "https://github.com/pedroduuarte/fluentpath-project#readme",
-  "description": "",
   "devDependencies": {
     "nodemon": "^3.1.9"
   },
   "dependencies": {
     "express": "^4.21.2"
-  }
+  },
+  "description": ""
 }

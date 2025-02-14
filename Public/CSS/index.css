@@ -90,17 +90,7 @@
     margin: 0 20px 20px 20px;
 }
 
-#post-1 {
-    background: url(../../Assets/index/posts/street.jpg) no-repeat;
-    background-size: cover;
-    background-position-x: 250px;
-}
 
-#post-2 {
-    background: url(../../Assets/index/posts/computer.png) no-repeat;
-    background-size: cover;
-    background-position-x: 250px;
-}
 
 /* DESCUBRA */
 #sec-3 {
