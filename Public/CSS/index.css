@@ -50,13 +50,13 @@
     width: 100%;
 
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 2%;
 }
 
 .posts {
-    width: 49%;
-    min-height: 300px;
+    width: 40%;
+    min-height: 250px;
     height: 45%;
 
     filter: saturate(0) contrast(1.1);
@@ -79,28 +79,18 @@
 }
 
 .posts a div h2 {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     margin: 20px;
 }
 
 .posts a div p {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 400;
     margin: 0 20px 20px 20px;
 }
 
-#post-1 {
-    background: url(../../Assets/index/posts/street.jpg) no-repeat;
-    background-size: cover;
-    background-position-x: 250px;
-}
 
-#post-2 {
-    background: url(../../Assets/index/posts/computer.png) no-repeat;
-    background-size: cover;
-    background-position-x: 250px;
-}
 
 /* DESCUBRA */
 #sec-3 {
@@ -171,7 +161,7 @@
 }
 
 .cards a span h2, p {
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .cards a span h2 {
