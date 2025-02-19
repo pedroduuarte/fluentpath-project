@@ -5,6 +5,10 @@ const dbPromise = open(
     {
         filename: './Database/users.db',
         driver: sqlite3.Database
+    },
+    {
+        filename: './Database/posts.db',
+        driver: sqlite3.Database
     }
 )
 
