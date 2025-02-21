@@ -1,8 +1,11 @@
 import { Router } from 'express'
 import {db} from '../Database/db.js'
-import { getPosts } from '../Controllers/posts.controller.jsf'
+import { getPosts } from '../Controllers/posts.controller.js'
 
-export const postsRouter = Router()
+const postsRouter = Router()
 
-postsRouter.get('/api/postagens', getPosts) 
+
+postsRouter.get('/', getPosts) 
+
+export default postsRouter;
 

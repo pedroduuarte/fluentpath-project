@@ -1,51 +1,53 @@
+console.log("Script postagens.js carregado!");
 window.addEventListener("load", main);
 
+let postagens = [];
 
-const postagem = [
-    {
-        id: 1001,
-        img: "../Assets/index/posts/street.jpg",
-        titulo: "Contratações de profissionais falantes de inglês cresce em 2024.",
-        resumo: "A fluência na língua inglesa está se tornando um dos mais valiosos diferenciais para profissionais no Brasil, especialmente aqueles em estágios iniciais de suas carreiras.",
-        link: "Pages/Postagem10001.html"
-    },
-    {
-        id: 1002,
-        img: "../Assets/index/posts/computer.png",
-        titulo:  "O mercado de desenvolvimento de software anda mais seleto e cada vez mais exige proficiência em inglês.",
-        resumo: "No dinâmico e competitivo universo do desenvolvimento de software, a proficiência em inglês deixou de ser apenas um diferencial e tornou-se uma exigência fundamental.",
-        link: "Pages/Postagem10002.html"
+async function main() {
+    try {
+        const response = await fetch("http://localhost/api/postagens");
+        if (!response.ok) {
+            throw new Error("Erro ao buscar postagens");
+        }
+        const dado = await response.json();
+        console.log("Resposta da API:", dado);
+        postagens = dado;
+        renderizarPostagens();
+
+        console.log("Renderizando postagens...");
+    } catch (error) {
+        console.error("Erro ao carregar postagens:", error);
     }
+}
 
-];
+function renderizarPostagens() {
+    const postagensContainer = document.getElementsByClassName("postagens-container")[0];
 
-function main() {
-    const postagens = document.getElementsByClassName("postagens-container")[0];
+    // Limpa o container antes de renderizar
+    postagensContainer.innerHTML = "";
 
-    for(let x = 0; x < postagem.length; x++) {
+    for (let x = 0; x < postagens.length; x++) {
         const article = document.createElement("article");
         article.classList.add("posts");
+
         const img = document.createElement("img");
         const link = document.createElement("a");
         const div = document.createElement("div");
         const titulo = document.createElement("h2");
         const resumo = document.createElement("p");
-    
-        article.classList.add("posts");
-        img.src = postagem[x].img;
-        link.href = postagem[x].link;
-        titulo.textContent = postagem[x].titulo;
-        resumo.textContent = postagem[x].resumo;
-    
+
+        img.src = postagens[x].img;
+        img.alt = `Imagem da postagem ${x + 1}`;
+        link.href = postagens[x].link;
+        link.target = "_blank"; // Abre o link em outra aba
+        titulo.textContent = postagens[x].titulo;
+        resumo.textContent = postagens[x].resumo;
+
         div.appendChild(titulo);
         div.appendChild(resumo);
         link.appendChild(div);
         article.appendChild(link);
         article.appendChild(img);
-        postagens.appendChild(article);
-
+        postagensContainer.appendChild(article);
     }
-
 }
-
-
