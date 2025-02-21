@@ -12,7 +12,7 @@ const modalElementLogin = `
             <button id="login-submit" class="modal-submit" type="submit">ENTRAR</button>
         </form>
 
-        <button id="signin-button">Registre-se</button>
+        <button id="modal-signin-button">Registre-se</button>
     </div>
 </dialog>
 `
@@ -21,12 +21,12 @@ document.body.insertAdjacentHTML("beforeend", modalElementLogin);
 // Lógica de abertura e fechamento do modal de login
 const modalLogin = document.querySelector('#dialog-login')
 
-const buttonLogin = document.querySelector('#loginButton')
-buttonLogin.onclick = function () {
+const modalLoginButton = document.querySelector('#loginButton')
+modalLoginButton.onclick = function () {
     modalLogin.showModal()
 
-    const buttonClose = document.querySelector('#close-login')
-    buttonClose.onclick = function () {
+    const modalButtonClose = document.querySelector('#close-login')
+    modalButtonClose.onclick = function () {
         modalLogin.close()
     }
 }
@@ -43,6 +43,8 @@ const modalElementSignin = `
             <input id="password" type="password" placeholder="Senha" required>
             <button id="signin-submit" class="modal-submit" type="submit">REGISTRAR</button>
         </form>
+
+        <button id="modal-login-button">Logue-se</button>
     </div>
 </dialog>
 `
@@ -51,15 +53,21 @@ document.body.insertAdjacentHTML("beforeend", modalElementSignin);
 // Lógica de abertura e fechamento do modal de signin
 const modalSignin = document.querySelector('#dialog-signin')
 
-const buttonSignin = document.querySelector('#signin-button')
-buttonSignin.onclick = function () {
+const modalSigninButton = document.querySelector('#modal-signin-button')
+modalSigninButton.onclick = function () {
     modalLogin.close()
     modalSignin.showModal()
 
-    const buttonClose = document.querySelector('#close-signin')
-    buttonClose.onclick = function () {
+    const modalButtonClose = document.querySelector('#close-signin')
+    modalButtonClose.onclick = function () {
         modalSignin.close()
     }
+}
+
+const buttonModalLogin = document.querySelector('#modal-login-button')
+buttonModalLogin.onclick = function () {
+    modalSignin.close()
+    modalLogin.showModal()
 }
 
 
