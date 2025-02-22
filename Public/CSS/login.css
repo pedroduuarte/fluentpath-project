@@ -87,7 +87,8 @@ button {
     background-color: #48bb16;
 }
 
-#signin-button {
+#modal-signin-button,
+#modal-login-button {
     border: none;
     background: none;
 }
