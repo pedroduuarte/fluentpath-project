@@ -14,7 +14,6 @@ const postagens = [
         img: "../Assets/index/posts/street.jpg",
         titulo: "Contratações de profissionais falantes de inglês cresce em 2024.",
         resumo: "A fluência na língua inglesa está se tornando um dos mais valiosos diferenciais para profissionais no Brasil, especialmente aqueles em estágios iniciais de suas carreiras.",
-        link: "Pages/Postagem10001.html",
         conteudo: JSON.stringify([
             {tipo: "h1", texto: "O mercado de desenvolvimento de software anda mais seleto e cada vez mais exige proficiência em inglês"},
             {tipo:"p", texto: "A fluência na língua inglesa está se tornando um dos mais valiosos diferenciais para profissionais no Brasil, especialmente aqueles em estágios iniciais de suas carreiras. Diversos estudos e levantamentos apontam que brasileiros fluentes em inglês podem ganhar mais que o dobro em relação àqueles que não dominam o idioma. Essa realidade reflete a crescente demanda por competências globais em um mercado de trabalho cada vez mais conectado."},
@@ -36,7 +35,6 @@ const postagens = [
         img: "../Assets/index/posts/computer.png",
         titulo:  "O mercado de desenvolvimento de software anda mais seleto e cada vez mais exige proficiência em inglês.",
         resumo: "No dinâmico e competitivo universo do desenvolvimento de software, a proficiência em inglês deixou de ser apenas um diferencial e tornou-se uma exigência fundamental.",
-        link: "Pages/Postagem10002.html",
         conteudo: JSON.stringify([
             {tipo: "h1", texto: "O mercado de desenvolvimento de software anda mais seleto e cada vez mais exige proficiência em inglês"},
             {tipo: "p", texto: "No dinâmico e competitivo universo do desenvolvimento de software, a proficiência em inglês deixou de ser apenas um diferencial e tornou-se uma exigência fundamental. As demandas do setor, cada vez mais globalizado, têm transformado o inglês em uma competência obrigatória para os profissionais que desejam se destacar e acessar as melhores oportunidades."},

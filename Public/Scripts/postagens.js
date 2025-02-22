@@ -32,14 +32,14 @@ function renderizarPostagens() {
 
         const img = document.createElement("img");
         const link = document.createElement("a");
-        link.href = `Postagem.html?id=${postagens[x].id}`
+        link.href = `Postagem.html?id=${postagens[x].id}`;
         const div = document.createElement("div");
         const titulo = document.createElement("h2");
         const resumo = document.createElement("p");
 
         img.src = postagens[x].img;
         img.alt = `Imagem da postagem ${x + 1}`;
-        link.href = postagens[x].link;
+
         link.target = "_blank"; // Abre o link em outra aba
         titulo.textContent = postagens[x].titulo;
         resumo.textContent = postagens[x].resumo;
