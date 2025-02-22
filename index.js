@@ -10,7 +10,6 @@ app.use("/api/postagens", postsRouter)
 app.use(routerAuth)
 
 
-
 app.listen(80, () => {
     console.log('Servidor iniciado na porta 80.')
 })
