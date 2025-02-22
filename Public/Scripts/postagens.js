@@ -1,4 +1,4 @@
-console.log("Script postagens.js carregado!");
+console.log("O script postagens.js foi carregado corretamente!");
 window.addEventListener("load", main);
 
 let postagens = [];
