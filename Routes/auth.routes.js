@@ -1,6 +1,8 @@
-import { Router } from "express";
-import { register } from "../Controllers/auth.controller.js";
+import { Router } from "express"
+import { signin } from "../Controllers/auth.controller.js"
+import { login } from "../Controllers/auth.controller.js"
 
 export const routerAuth = Router()
 
-routerAuth.post('/register', register)
+routerAuth.post('/signin', signin)
+routerAuth.post('/login', login)
