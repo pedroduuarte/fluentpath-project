@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <form id="form-login">
             <input id="form-login-email" type="email" placeholder="Email" required>
             <input id="form-login-password" type="password" placeholder="Senha" required>
-            <p id="form-login-message" class="forms-message" style="display: none;"></p>
+            <p id="form-login-message" class="forms-message"></p>
             <button id="login-submit" class="modal-submit" type="submit">ENTRAR</button>
         </form>
 
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <form id="form-signin">
             <input id="form-signin-email" type="email" placeholder="Email" required>
             <input id="form-signin-password" type="password" placeholder="Senha" required>
-            <p id="form-signin-message" class="forms-message" style="display: none;"></p>
+            <p id="form-signin-message" class="forms-message"></p>
             <button id="signin-submit" class="modal-submit" type="submit">REGISTRAR</button>
         </form>
 
@@ -92,10 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
             })
 
             const data = await response.json()
+            messageColor(message, response.status)
             message.textContent = data.message
-            message.style.display = 'block'
         } catch (error) {
-            console.log('Erro ao registrar.')
+            messageColor(message, 500)
+            message.textContent = 'Erro não esperado ao registrar.'
         }
     })
 
@@ -105,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const email = document.querySelector('#form-login-email').value
         const password = document.querySelector('#form-login-password').value
+        const message = document.querySelector('#form-login-message')
 
         try {
             const response = await fetch('http://localhost:80/login', {
@@ -115,17 +117,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({ email, password })
             })
             const data = await response.json()
-
+            
             if (response.ok) {
                 localStorage.setItem('token', data.token)
                 modalLogin.close()
-                console.log(`${data.message} \n ${localStorage.getItem('token')}`)
-            } else {
-                console.log(data.message)
             }
+            
+            messageColor(message, response.status)
+            message.textContent = data.message
 
         } catch (error) {
-            console.log('Erro ao logar.')
+            messageColor(message, 500)
+            message.textContent = 'Erro não esperado ao logar.'
         }
     })
+
+    function messageColor(element, statusCode) {
+        let color = ""
+
+        if (statusCode >= 200 && statusCode < 300) {
+            element.style.color = 'green'
+        } else if (statusCode >= 400) {
+            element.style.color = 'red'
+        }
+    }
+
 });

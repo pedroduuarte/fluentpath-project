@@ -10,14 +10,15 @@ async function signin(req, res) {
     }
 
     try {
-        const userExists = await db.get(`
+        const user = await db.get(`
             SELECT email
             FROM users
             WHERE email = ?
             `, [email]
         )
-        if (!userExists) {
-            const salt = await bcrypt.genSalt(12); 
+
+        if (!user) {
+            const salt = await bcrypt.genSalt(12);
             const encryptedPassword = await bcrypt.hash(password, salt)
 
             db.run(`
@@ -26,9 +27,11 @@ async function signin(req, res) {
                 `, [email, encryptedPassword]
             )
             return res.status(201).json({ message: 'Usuário registrado com sucesso.' })
+
         } else {
-            return res.status(500).json({ message: 'Email já foi cadastrado.' })
+            return res.status(409).json({ message: 'Email já foi cadastrado.' })
         }
+
     } catch (error) {
         return res.status(500).json({ message: 'Erro ao registrar.' })
     }
@@ -49,24 +52,24 @@ async function login(req, res) {
             WHERE email = ?
             `, [email]
         )
-        
-        if (email === user.email) {
-            const validPassword = await bcrypt.compare(password, user.password)
-            
-            if (validPassword) {
-                const userToken = jwt.sign(
-                    { email: user.email },
-                    'istoDeveriaSerUmaVariavelDeAmbienteTrazidoDeForaDoCodigoMasComoÉSoUmProjetodaFaculdadeAchoQueVouSerUmPoucoMaisPreguiçoso',
-                    { expiresIn: '1h' }
-                )
-                return res.status(200).json({ message: 'Você está logado!', token: `${userToken}` });
-            }
 
-            return res.status(400).json({ message: 'Revise email e senha.' })
-        } else {
+        if (!user) {
             return res.status(400).json({ message: 'Revise email e senha.' })
         }
 
+        const validPassword = await bcrypt.compare(password, user.password)
+
+        if (validPassword) {
+            const userToken = jwt.sign(
+                { email: user.email },
+                'istoDeveriaSerUmaVariavelDeAmbienteTrazidoDeForaDoCodigoMasComoÉSoUmProjetodaFaculdadeAchoQueVouSerUmPoucoMaisPreguiçoso',
+                { expiresIn: '1h' }
+            )
+
+            return res.status(200).json({ message: 'Você está logado!', token: `${userToken}` });
+        }
+
+        return res.status(400).json({ message: 'Revise a senha.' })
 
     } catch (error) {
         return res.status(500).json({ message: 'Erro ao logar.' })
