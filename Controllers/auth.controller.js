@@ -48,12 +48,11 @@ async function login(req, res) {
             WHERE email = ?
             `, [email]
         )
-        // * Decodificar a senha
-        if (user) { // * Comparar as senhas
+        
+        if (user) {
             const validPassword = bcrypt.compare(password, user.senha)
             
             if (validPassword) {
-                // * Token de login
                 const userToken = jwt.sign(
                     { email: user.email },
                     'istoDeveriaSerUmaVariavelDeAmbienteTrazidoDeForaDoCodigoMasComoÉSoUmProjetodaFaculdadeAchoQueVouSerUmPoucoMaisPreguiçoso',
@@ -70,6 +69,6 @@ async function login(req, res) {
 
     } catch (error) {
         return res.status(500).json({ mensagem: 'Erro ao logar.' })
-    } // * Ajustar as mensagens
+    }
 }
 export { login }

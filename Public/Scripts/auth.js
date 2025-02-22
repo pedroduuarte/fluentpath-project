@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
 
             const data = await response.json()
-            window.alert(data.error)
+            console.log(data.mensagem)
         } catch (error) {
             console.log('Erro ao registrar.')
         }
