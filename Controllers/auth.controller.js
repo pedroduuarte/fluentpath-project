@@ -6,7 +6,7 @@ async function signin(req, res) {
     const { email, password } = req.body
 
     if (!email || !password) {
-        return res.status(400).json({ error: 'Email e senha são obrigatórios.' })
+        return res.status(400).json({ message: 'Email e senha são obrigatórios.' })
     }
 
     try {
@@ -17,19 +17,20 @@ async function signin(req, res) {
             `, [email]
         )
         if (!userExists) {
-            const encryptedPassword = bcrypt.hash(password, 12)
+            const salt = await bcrypt.genSalt(12); 
+            const encryptedPassword = await bcrypt.hash(password, salt)
 
             db.run(`
-                INSERT INTO users (email, senha, nivel)
+                INSERT INTO users (email, password, level)
                 VALUES (?, ?, 1)
                 `, [email, encryptedPassword]
             )
-            return res.status(201).json({ mensagem: 'Usuário registrado com sucesso.' })
+            return res.status(201).json({ message: 'Usuário registrado com sucesso.' })
         } else {
-            return res.status(500).json({ mensagem: 'Email já foi cadastrado.' })
+            return res.status(500).json({ message: 'Email já foi cadastrado.' })
         }
     } catch (error) {
-        return res.status(500).json({ mensagem: 'Erro ao registrar.' })
+        return res.status(500).json({ message: 'Erro ao registrar.' })
     }
 }
 export { signin }
@@ -38,19 +39,19 @@ async function login(req, res) {
     const { email, password } = req.body
 
     if (!email || !password) {
-        return res.status(400).json({ mensagem: 'Email e senha são obrigatórios.' })
+        return res.status(400).json({ message: 'Email e senha são obrigatórios.' })
     }
 
     try {
         const user = await db.get(`
-            SELECT email, senha
+            SELECT email, password
             FROM users
             WHERE email = ?
             `, [email]
         )
         
-        if (user) {
-            const validPassword = bcrypt.compare(password, user.senha)
+        if (email === user.email) {
+            const validPassword = await bcrypt.compare(password, user.password)
             
             if (validPassword) {
                 const userToken = jwt.sign(
@@ -58,17 +59,17 @@ async function login(req, res) {
                     'istoDeveriaSerUmaVariavelDeAmbienteTrazidoDeForaDoCodigoMasComoÉSoUmProjetodaFaculdadeAchoQueVouSerUmPoucoMaisPreguiçoso',
                     { expiresIn: '1h' }
                 )
-                return res.status(200).json({ mensagem: 'Você está logado!', token: `${userToken}` });
+                return res.status(200).json({ message: 'Você está logado!', token: `${userToken}` });
             }
 
-            return res.status(400).json({ mensagem: 'Revise email e senha.' })
+            return res.status(400).json({ message: 'Revise email e senha.' })
         } else {
-            return res.status(400).json({ mensagem: 'Revise email e senha.' })
+            return res.status(400).json({ message: 'Revise email e senha.' })
         }
 
 
     } catch (error) {
-        return res.status(500).json({ mensagem: 'Erro ao logar.' })
+        return res.status(500).json({ message: 'Erro ao logar.' })
     }
 }
 export { login }

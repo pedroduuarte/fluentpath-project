@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <form id="form-login">
             <input id="form-login-email" type="email" placeholder="Email" required>
             <input id="form-login-password" type="password" placeholder="Senha" required>
+            <p id="form-login-message" class="forms-message" style="display: none;"></p>
             <button id="login-submit" class="modal-submit" type="submit">ENTRAR</button>
         </form>
 
@@ -41,10 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <form id="form-signin">
             <input id="form-signin-email" type="email" placeholder="Email" required>
             <input id="form-signin-password" type="password" placeholder="Senha" required>
+            <p id="form-signin-message" class="forms-message" style="display: none;"></p>
             <button id="signin-submit" class="modal-submit" type="submit">REGISTRAR</button>
         </form>
 
         <button id="modal-login-button">Logue-se</button>
+
     </div>
 </dialog>
 `
@@ -77,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const email = document.querySelector('#form-signin-email').value
         const password = document.querySelector('#form-signin-password').value
+        const message = document.querySelector('#form-signin-message')
 
         try {
             const response = await fetch('http://localhost:80/signin', {
@@ -88,7 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
             })
 
             const data = await response.json()
-            console.log(data.mensagem)
+            message.textContent = data.message
+            message.style.display = 'block'
         } catch (error) {
             console.log('Erro ao registrar.')
         }
@@ -114,9 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.ok) {
                 localStorage.setItem('token', data.token)
                 modalLogin.close()
-                console.log(`${data.mensagem} \n ${localStorage.getItem('token')}`)
+                console.log(`${data.message} \n ${localStorage.getItem('token')}`)
             } else {
-                console.log('Response error')
+                console.log(data.message)
             }
 
         } catch (error) {

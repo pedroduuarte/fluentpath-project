@@ -6,8 +6,8 @@ async function criarTabelas() {
         await db.run(`
             CREATE TABLE IF NOT EXISTS users (
                 email TEXT PRIMARY KEY,
-                senha TEXT,
-                nivel INTEGER
+                password TEXT,
+                level INTEGER
             );
         `);
         
