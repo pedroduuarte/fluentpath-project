@@ -13,11 +13,12 @@ async function criarTabelas() {
         
         await db.run(`
             CREATE TABLE IF NOT EXISTS posts (
-                id INTEGER PRIMARY KEY,
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
                 img TEXT NOT NULL,
                 titulo TEXT NOT NULL,
                 resumo TEXT NOT NULL,
-                link TEXT NOT NULL
+                link TEXT NOT NULL,
+                conteudo TEXT NOT NULL
             );
         `);
         console.log("Tabelas criadas.")

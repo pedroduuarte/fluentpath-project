@@ -32,6 +32,7 @@ function renderizarPostagens() {
 
         const img = document.createElement("img");
         const link = document.createElement("a");
+        link.href = `Postagem.html?id=${postagens[x].id}`
         const div = document.createElement("div");
         const titulo = document.createElement("h2");
         const resumo = document.createElement("p");
