@@ -34,17 +34,23 @@ main {
     color: white;
 }
 
-.cursos-container {
+#cursos-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80%;
     width: 100%;
     gap: 30px;
+    flex-wrap: wrap;
+}
+
+#cursos-container h2 {
+    color: white;
+    font-size: 2.5rem;
 }
 
 .curso-container {
-    height: 75%;
+    height: 40%;
     width: 25%;
     background:
         url(../Assets/Filter2.png) repeat,

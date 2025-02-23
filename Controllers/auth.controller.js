@@ -47,7 +47,7 @@ async function login(req, res) {
 
     try {
         const user = await db.get(`
-            SELECT email, password
+            SELECT email, password, level
             FROM users
             WHERE email = ?
             `, [email]
@@ -61,7 +61,7 @@ async function login(req, res) {
 
         if (validPassword) {
             const userToken = jwt.sign(
-                { email: user.email },
+                { email: user.email, level: user.level },
                 'istoDeveriaSerUmaVariavelDeAmbienteTrazidoDeForaDoCodigoMasComoÉSoUmProjetodaFaculdadeAchoQueVouSerUmPoucoMaisPreguiçoso',
                 { expiresIn: '1h' }
             )
