@@ -40,31 +40,6 @@ async function getPostById(req, res) {
     }
 }
 
-async function getUltimasPostagens(req, res) {
-    try {
-        console.log("Buscando últimas postagens...");
-
-        const postagens = await new Promise((resolve, reject) => {
-            db.all(
-                "SELECT * FROM posts ORDER BY id DESC LIMIT 2",
-                (err, rows) => {
-                    if (err) {
-                        console.error("Erro ao buscar postagens: ", err);
-                        reject(err);
-                    } else {
-                        console.log("Postagens encontradas:", rows);
-                        resolve(rows);
-                    }
-                }
-            );
-        });
-
-        res.status(200).json(postagens);
-    } catch (error) {
-        console.error("Erro ao buscar postagens: ", error);
-        res.status(500).json({ message: "Erro no servidor" });
-    }
-}
 
 async function postNewPost(req, res) {
     try {
@@ -101,7 +76,7 @@ async function deletarPost(req, res) {
     const { id } = req.params;
     try {
         const resultado = await db.run('DELETE FROM posts WHERE id = ?', [id]);
-        if (resultado.affectedRows === 0) {
+        if (resultado.changes === 0) {
             return res.status(404).json({message: "Postagem não encontrada"});
         }
         res.status(200).json({message: "Postagem deletada com sucesso"});
@@ -155,7 +130,6 @@ async function atualizarPost(req, res) {
 export {
     getPosts,
     getPostById,
-    getUltimasPostagens,
     postNewPost,
     deletarPost,
     atualizarPost
