@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.ok) {
                 localStorage.setItem('token', data.token)
                 modalLogin.close()
+                location.reload()
             }
             
             messageColor(message, response.status)
@@ -141,5 +142,4 @@ document.addEventListener("DOMContentLoaded", () => {
             element.style.color = 'red'
         }
     }
-
 });
