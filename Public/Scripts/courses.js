@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < payload.level; i++) {
         buttons[i].addEventListener('click', async () => {
-            console.log('Click A1')
             try {
                 const response = await setUserLevel(payload.email, (i + 2))
     
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const coursesContainer = document.querySelector('#cursos-container')
 
         const userLevel = getUserLevel()
-        console.log(userLevel) // Remover
         if (userLevel === null) {
             const loginMessage = `<h2>Logue para acessar o conteúdo! :D</h2>`
             coursesContainer.innerHTML = loginMessage

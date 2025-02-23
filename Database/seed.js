@@ -1,13 +1,5 @@
 import { db } from "./db.js";
 
-const users = [
-    {
-        email: "daniel@email.com",
-        password: "teste",
-        level: 1
-    }
-]
-
 const postagens = [
     {
         id: 0,
