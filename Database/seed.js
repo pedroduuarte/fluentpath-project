@@ -39,16 +39,6 @@ const postagens = [
     }
 ];
 
-for (let i = 0; i < users.length; i++) {
-    await db.run(`
-        INSERT INTO users (email, password, level)
-        VALUES (?, ?, ?)`, [
-            users[i].email,
-            users[i].password,
-            users[i].level
-        ]
-    )
-}
 
 for (let x = 0; x < postagens.length; x++) {
     await db.run(`
