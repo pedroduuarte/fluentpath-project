@@ -17,7 +17,6 @@ async function criarTabelas() {
                 img TEXT NOT NULL,
                 titulo TEXT NOT NULL,
                 resumo TEXT NOT NULL,
-                link TEXT NOT NULL,
                 conteudo TEXT NOT NULL
             );
         `);
