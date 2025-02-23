@@ -37,10 +37,6 @@ function renderizarPostagens(postagem) {
         return;
     }
 
-    if (!Array.isArray(conteudo)) {
-        console.error("Erro: O conteúdo não é um array", conteudo);
-        return;
-    }
     conteudo.forEach(elemento => {
         if (!elemento.tipo || !elemento.texto) {
             console.warn("Elemento inválido encontrado: ", elemento);
